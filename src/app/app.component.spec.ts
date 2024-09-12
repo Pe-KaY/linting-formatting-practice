@@ -1,31 +1,38 @@
-import { TestBed } from '@angular/core/testing';
+import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
+  let fixture: ComponentFixture<AppComponent>;
+  let component: AppComponent;
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [AppComponent],
     }).compileComponents();
   });
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
-  });
-
-  it(`should have the 'linting-formatting-practice' title`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('linting-formatting-practice');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
+  beforeEach(() => {
+    fixture = TestBed.createComponent(AppComponent);
+    component = fixture.componentInstance;
     fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain(
-      'Hello, linting-formatting-practice',
-    );
   });
-});
+
+  it('should create the app', () => {
+    expect(component).toBeTruthy();
+  });
+
+    // this test case should log a message when ngOnInit is called
+  it('should log a message when x is 10', () => {
+    const spy = spyOn(console, 'log');
+    component.ngOnInit();
+    expect(spy).toHaveBeenCalledWith('x is 10');
+  });
+
+
+  // this test case should log a message when doSomething is called
+  it('should log a message when calling doSomething', () => {
+    const spy = spyOn(console, 'log');
+    component.doSomething();
+    expect(spy).toHaveBeenCalledWith(20);
+  });
+})

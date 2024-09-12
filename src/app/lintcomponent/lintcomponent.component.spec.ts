@@ -8,10 +8,9 @@ describe('LintcomponentComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [LintcomponentComponent]
-    })
-    .compileComponents();
-    
+      imports: [LintcomponentComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(LintcomponentComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -19,5 +18,16 @@ describe('LintcomponentComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+
+  //  simple test case to test if the displayMessage function returns the correct message
+  it('should have a message', () => {
+    expect(component.displayMessage()).toEqual(
+      'Hello, this component follows linting and formatting rules!',
+    );
   });
 });
