@@ -1,0 +1,39 @@
+{
+    "root": true,
+    "overrides": [
+      {
+        "files": ["*.ts"],
+        "parserOptions": {
+          "project": ["tsconfig.json"],
+          "createDefaultProgram": true
+        },
+        "extends": [
+          "eslint:recommended",
+          "plugin:@typescript-eslint/recommended",
+          "plugin:@angular-eslint/recommended",
+          "plugin:prettier/recommended" 
+        ],
+        "rules": {
+          "prettier/prettier": "error",
+          "@typescript-eslint/no-unused-vars": ["error"],
+          "@angular-eslint/directive-selector": [
+            "error",
+            { "type": "attribute", "prefix": "app", "style": "camelCase" }
+          ],
+          "@angular-eslint/component-selector": [
+            "error",
+            { "type": "element", "prefix": "app", "style": "kebab-case" }
+          ],
+          // custom rules below(object curly spacing enforces spaces in curly braces to improve readability)
+          // (no-console This rule will prevent the use of console.log in your code, which is helpful to avoid leaving debugging code in production.)
+          "object-curly-spacing": ["error", "always"],
+          "no-console": ["error", { "allow": ["warn", "error"] }]
+        }
+      },
+      {
+        "files": ["*.html"],
+        "extends": ["plugin:@angular-eslint/template/recommended"],
+        "rules": {}
+      }
+    ]
+  }
